@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acervo Animal</title>
+    <!-- Adicione a fonte Road Rage -->
+    <link href="https://fonts.googleapis.com/css2?family=Road+Rage&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos gerais */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0e4d7;
+        }
+
+        /* Barra de navegação */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #d98e04;
+            padding: 20px;
+            color: white;
+        }
+        .search-container {
+            position: relative;
+            margin-left: 20px;
+        }
+        .navbar input[type="text"] {
+            padding: 8px;
+            border-radius: 4px;
+            border: none;
+            width: 100%;
+            max-width: 450px;
+        }
+        .search-icon {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #d98e04;
+        }
+        .user-options {
+            display: flex;
+            align-items: center;
+        }
+        .user-options a {
+            color: white;
+            margin: 0 5px;
+            text-decoration: none;
+        }
+
+        /* Menu de categorias */
+        .categories {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            background-color: #d98e04;
+            padding: 15px;
+        }
+        .categories a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Banner central */
+        .banner {
+            position: relative;
+            text-align: center;
+            padding: 20px 0;
+            background-color: #fff4e3;
+            overflow: hidden;
+        }
+        .banner-images {
+            display: flex;
+            width: 100%;
+            overflow-x: scroll;
+        }
+        .banner-images img {
+            height: 200px;
+            width: auto;
+            flex: none;
+            border-radius: 5px;
+            object-fit: cover;
+            margin: 0 5px;
+        }
+        .banner-text {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            text-align: center;
+        }
+        .banner-text h1 {
+            font-family: 'Road Rage', Arial, sans-serif;
+            font-size: 2em;
+            color: white;
+            text-shadow: -3px -3px 0 #000, 3px -3px 0 #000, -3px 3px 0 #000, 3px 3px 0 #000;
+        }
+        .banner-text p {
+            font-size: 1em;
+            color: white;
+            text-shadow: -3px -3px 0 #000, 3px -3px 0 #000, -3px 3px 0 #000, 3px 3px 0 #000;
+        }
+
+        /* Seção de filtros */
+        .filters {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .filter-options {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .filter-item {
+            text-align: center;
+            font-size: 0.9em;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 120px;
+        }
+        .filter-image {
+            width: 100%;
+            max-width: 120px;
+            height: auto;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 5px;
+        }
+
+        /* Rodapé */
+        .footer {
+            background-color: #f5be58;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        .footer p {
+            margin: 0;
+            font-size: 1em;
+        }
+
+        /* Estilos para o parágrafo "MAIS PESQUISADOS" */
+        .mais-pesquisados {
+            font-family: Arial, sans-serif;
+            font-size: 2em;
+            color: #d98e04;
+            text-align: center;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .navbar, .categories {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .navbar input[type="text"] {
+                max-width: 300px;
+                margin-bottom: 10px;
+            }
+            .banner-text h1 {
+                font-size: 1.8em;
+            }
+            .banner-text p {
+                font-size: 1em;
+                margin-top: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar {
+                padding: 10px;
+            }
+            .search-container, .user-options {
+                margin: 0;
+                width: 100%;
+                text-align: center;
+            }
+            .navbar input[type="text"] {
+                width: 100%;
+                max-width: 250px;
+            }
+            .banner-text h1 {
+                font-size: 1.5em;
+            }
+            .banner-text p {
+                font-size: 0.9em;
+            }
+            .filter-image {
+                width: 80px;
+                height: 80px;
+            }
+            .mais-pesquisados {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Barra de navegação -->
+    <header>
+        <div class="navbar">
+            <div class="logo">www.url.com</div>
+            <div class="search-container">
+                <input type="text" placeholder="Pesquise um animal">
+                <span class="search-icon">🔍</span>
+            </div>
+            <div class="user-options">
+                <a href="#">Entrar</a> | <a href="#">Cadastrar-se</a>
+                <span class="user-icon">👤</span>
+            </div>
+        </div>
+        <!-- Menu de categorias -->
+        <nav class="categories">
+            <a href="#">Mamíferos</a>
+            <a href="#">Aves</a>
+            <a href="#">Répteis</a>
+            <a href="#">Anfíbios</a>
+            <a href="#">Peixes</a>
+            <a href="#">Insetos e aracnídeos</a>
+        </nav>
+    </header>
+
+    <!-- Banner central -->
+    <section class="banner">
+        <div class="banner-images">
+            <!-- Imagens do banner -->
+            <img src="como-criar-jabuti-reptil-1280x720.jpg" alt="Animal à Esquerda">
+            <!-- Coloque outras imagens aqui -->
+        </div>
+        <div class="banner-text">
+            <h1>Bem-vindo(a)!</h1>
+            <p>Aqui no Acervo Animal você encontra todas as informações necessárias para a criação de diversos tipos de animais.</p>
+        </div>
+    </section>
+
+    <!-- Título da seção de filtros -->
+    <p class="mais-pesquisados">MAIS PESQUISADOS</p>
+
+    <!-- Seção de Filtros -->
+    <section class="filters">
+        <div class="filter-options">
+            <div class="filter-item">
+                <img src="photo-monkey-isolated-on-white-background-62516.jpg" alt="Primatas" class="filter-image"> Primatas
+            </div>
+            <!-- Coloque outras opções aqui -->
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+        <p>&copy; 2024 Acervo Animal. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
